@@ -2,7 +2,6 @@ package io.su0.test.soccer.controller;
 
 import io.su0.test.soccer.domain.Group;
 import io.su0.test.soccer.persistence.GroupRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
