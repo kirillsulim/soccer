@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+    - "27017:27017"
+  soccer:
+    build:
+      context: .
+      args:
+        JAR_FILE: soccer-1.0-SNAPSHOT.jar
+
