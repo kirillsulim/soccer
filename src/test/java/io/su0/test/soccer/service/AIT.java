@@ -19,7 +19,7 @@ import java.io.File;
 public class AIT {
 
     @ClassRule
-    public static DockerComposeContainer soccer = new DockerComposeContainer<>(new File("src/test/resources/docker-compose-it.yml"))
+    public static DockerComposeContainer soccer = new DockerComposeContainer<>(new File("docker-compose-it.yml"))
             .withExposedService("soccer", 8080);
 
     /*

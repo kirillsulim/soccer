@@ -1,4 +1,4 @@
-version: '3.1'
+version: '2.0'
 
 services:
   mongo:
@@ -8,7 +8,7 @@ services:
       - "27017:27017"
   soccer:
     build:
-      context: ../../../
+      context: .
       args:
         JAR_FILE: soccer-1.0-SNAPSHOT.jar
     ports:
