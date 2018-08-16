@@ -5,10 +5,14 @@ services:
     image: mongo
     restart: always
     ports:
-    - "27017:27017"
+      - "27017:27017"
   soccer:
     build:
-      context: .
+      context: ../../../
       args:
         JAR_FILE: soccer-1.0-SNAPSHOT.jar
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
 

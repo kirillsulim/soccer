@@ -1,4 +1,4 @@
-FROM java:alpine
+FROM openjdk:8-slim
 MAINTAINER Kirill Sulim <kirillsulim@gmail.com>
 
 ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/soccer/soccer.jar"]
