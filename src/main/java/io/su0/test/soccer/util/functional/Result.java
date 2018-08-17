@@ -56,6 +56,15 @@ public class Result<R, E> {
         }
     }
 
+    public <R1> Result<R1, E> flatMap(Function<R, Result<R1, E>> converter) {
+        if (isOk()) {
+            return converter.apply(result);
+        }
+        else {
+            return Result.error(error);
+        }
+    }
+
     public static <R, E> Result<R, E> ok(R result) {
         return new Result<>(result, null);
     }

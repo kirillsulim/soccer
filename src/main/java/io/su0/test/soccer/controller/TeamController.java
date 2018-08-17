@@ -25,19 +25,19 @@ public class TeamController {
     public Team createTeam(@PathVariable String groupId, @RequestBody Team team) {
         return teamService.createTeam(groupId, team).getOrThrow();
     }
-/*
+
     @GetMapping("{id}")
-    public Group getGroup(@PathVariable String id) {
-        return groupService.findGroupById(id).orElseThrow(NotFoundException::new);
+    public Team getTeam(@PathVariable String groupId, @PathVariable String id) {
+        return teamService.getTeam(groupId, id).getOrThrow();
     }
 
     @DeleteMapping("{id}")
-    public void deleteGroup(@PathVariable String id) {
-        groupService.deleteById(id);
+    public void deleteTeam(@PathVariable String groupId, @PathVariable String id) {
+        teamService.deleteTeam(groupId, id).getOrThrow();
     }
 
     @PutMapping("{id}")
-    public Group updateGroup(@PathVariable String id, @RequestBody Group group) {
-        return groupService.updateGroup(id, group).orElseThrow(NotFoundException::new);
-    }*/
+    public Team updateTeam(@PathVariable String groupId, @PathVariable String id, @RequestBody Team newData) {
+        return teamService.updateTeam(groupId, id, old -> newData).getOrThrow();
+    }
 }
