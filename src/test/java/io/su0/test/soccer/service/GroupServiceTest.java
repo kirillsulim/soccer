@@ -38,7 +38,7 @@ public class GroupServiceTest {
 
         Group newData = new Group();
         newData.setName("New name");
-        Result<Group, RuntimeException> result = groupService.updateGroup("test", newData);
+        Result<Group, RuntimeException> result = groupService.updateGroup("test", old -> newData);
 
         Assert.assertEquals("New name", result.get().getName());
         verify(groupRepository, atLeastOnce()).save(newData);

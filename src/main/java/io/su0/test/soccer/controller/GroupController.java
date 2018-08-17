@@ -38,6 +38,11 @@ public class GroupController {
 
     @PutMapping("{id}")
     public Group updateGroup(@PathVariable String id, @RequestBody Group group) {
-        return groupService.updateGroup(id, group).getOrThrow();
+        return groupService
+                .updateGroup(id, original -> {
+                    group.setId(id);
+                    return group;
+                })
+                .getOrThrow();
     }
 }

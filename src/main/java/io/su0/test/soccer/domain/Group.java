@@ -3,7 +3,7 @@ package io.su0.test.soccer.domain;
 import org.springframework.data.annotation.Id;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 
 public class Group {
 
@@ -12,7 +12,7 @@ public class Group {
 
     private String name;
 
-    private List<Team> teams = Collections.emptyList();
+    private Map<String, Team> teams = Collections.emptyMap();
 
     public String getId() {
         return id;
@@ -30,11 +30,11 @@ public class Group {
         this.name = name;
     }
 
-    public List<Team> getTeams() {
+    public Map<String, Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(List<Team> teams) {
+    public void setTeams(Map<String, Team> teams) {
         this.teams = teams;
     }
 }

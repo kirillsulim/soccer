@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * GroupService
@@ -50,10 +51,7 @@ public class GroupService {
     }
 
     @Transactional
-    public Result<Group, RuntimeException> updateGroup(String id, Group newData) {
-        return findGroupById(id).map(group -> {
-            newData.setId(id);
-            return groupRepository.save(newData);
-        });
+    public Result<Group, RuntimeException> updateGroup(String id, Function<Group, Group> updater) {
+        return findGroupById(id).map(group -> groupRepository.save(updater.apply(group)));
     }
 }

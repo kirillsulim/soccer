@@ -1,12 +1,10 @@
 package io.su0.test.soccer.service;
 
-import io.su0.test.soccer.domain.Group;
 import io.su0.test.soccer.domain.Team;
 import io.su0.test.soccer.util.functional.Result;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.Collection;
 
 @Service
 public class TeamService {
@@ -17,7 +15,14 @@ public class TeamService {
         this.groupService = groupService;
     }
 
-    public Result<List<Team>, RuntimeException> getTeams(String groupId) {
-        return groupService.findGroupById(groupId).map(Group::getTeams);
+    public Result<Collection<Team>, RuntimeException> getTeams(String groupId) {
+        return groupService.findGroupById(groupId).map(group -> group.getTeams().values());
+    }
+
+    public Result<Team, RuntimeException> createTeam(String groupId, Team team) {
+        return groupService.updateGroup(groupId, group -> {
+            group.getTeams().put(team.getName(), team);
+            return group;
+        }).map(group -> group.getTeams().get(team.getName()));
     }
 }

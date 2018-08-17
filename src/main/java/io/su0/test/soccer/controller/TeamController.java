@@ -2,12 +2,9 @@ package io.su0.test.soccer.controller;
 
 import io.su0.test.soccer.domain.Team;
 import io.su0.test.soccer.service.TeamService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/groups/{groupId}/teams")
@@ -20,13 +17,13 @@ public class TeamController {
     }
 
     @GetMapping
-    public List<Team> getGroups(@PathVariable String groupId) {
+    public Collection<Team> getGroups(@PathVariable String groupId) {
         return teamService.getTeams(groupId).getOrThrow();
     }
-/*
+
     @PostMapping
     public Team createTeam(@PathVariable String groupId, @RequestBody Team team) {
-
+        return teamService.createTeam(groupId, team).getOrThrow();
     }
 /*
     @GetMapping("{id}")
