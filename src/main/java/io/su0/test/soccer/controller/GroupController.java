@@ -1,7 +1,8 @@
 package io.su0.test.soccer.controller;
 
 import io.su0.test.soccer.domain.Group;
-import io.su0.test.soccer.persistence.GroupRepository;
+import io.su0.test.soccer.exceptions.NotFoundException;
+import io.su0.test.soccer.service.GroupService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,36 +12,34 @@ import java.util.List;
 @RequestMapping("/groups")
 public class GroupController {
 
-    private final GroupRepository groupRepository;
+    private final GroupService groupService;
 
-    public GroupController(GroupRepository groupRepository) {
-        this.groupRepository = groupRepository;
+    public GroupController(GroupService groupService) {
+        this.groupService = groupService;
     }
 
     @GetMapping
     public List<Group> getGroups() {
-        return groupRepository.findAll();
+        return groupService.getGroups();
     }
 
     @PostMapping
     public Group createGroup(@RequestBody Group group) {
-        return groupRepository.save(group);
+        return groupService.createGroup(group);
     }
 
     @GetMapping("{id}")
     public Group getGroup(@PathVariable String id) {
-        return groupRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        return groupService.findGroupById(id).orElseThrow(NotFoundException::new);
     }
 
     @DeleteMapping("{id}")
     public void deleteGroup(@PathVariable String id) {
-        groupRepository.deleteById(id);
+        groupService.deleteById(id);
     }
 
     @PutMapping("{id}")
     public Group updateGroup(@PathVariable String id, @RequestBody Group group) {
-        groupRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
-        group.setId(id);
-        return groupRepository.save(group);
+        return groupService.updateGroup(id, group).orElseThrow(NotFoundException::new);
     }
 }
