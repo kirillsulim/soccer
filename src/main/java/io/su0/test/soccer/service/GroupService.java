@@ -1,11 +1,13 @@
 package io.su0.test.soccer.service;
 
 import io.su0.test.soccer.domain.Group;
+import io.su0.test.soccer.exceptions.NotFoundException;
 import io.su0.test.soccer.persistence.GroupRepository;
+import io.su0.test.soccer.util.functional.Result;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * GroupService
@@ -25,25 +27,33 @@ public class GroupService {
         return groupRepository.findAll();
     }
 
-    public Optional<Group> findGroupById(String id) {
-        return groupRepository.findById(id);
+    private static NotFoundException getGroupNotFoundException(String id) {
+        return new NotFoundException(String.format("Group by id '%s'", id));
     }
 
-    public void deleteById(String id) {
-        groupRepository.deleteById(id);
+    public Result<Group, RuntimeException> findGroupById(String id) {
+        return Result.fromOptional(
+                groupRepository.findById(id),
+                () -> getGroupNotFoundException(id)
+        );
     }
 
-    public Group createGroup(Group group) {
-        return groupRepository.save(group);
+    public Result<Void, RuntimeException> deleteById(String id) {
+        return findGroupById(id).map(group -> {
+            groupRepository.deleteById(group.getId());
+            return null;
+        });
     }
 
-    public Optional<Group> updateGroup(String id, Group newData) {
-        Optional<Group> found = groupRepository.findById(id);
-        if (found.isPresent()) {
+    public Result<Group, Void> createGroup(Group group) {
+        return Result.ok(groupRepository.save(group));
+    }
+
+    @Transactional
+    public Result<Group, RuntimeException> updateGroup(String id, Group newData) {
+        return findGroupById(id).map(group -> {
             newData.setId(id);
-            return Optional.of(groupRepository.save(newData));
-        } else {
-            return Optional.empty();
-        }
+            return groupRepository.save(newData);
+        });
     }
 }

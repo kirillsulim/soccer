@@ -1,12 +1,10 @@
 package io.su0.test.soccer.controller;
 
 import io.su0.test.soccer.domain.Group;
-import io.su0.test.soccer.exceptions.NotFoundException;
 import io.su0.test.soccer.service.GroupService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/groups")
@@ -25,12 +23,12 @@ public class GroupController {
 
     @PostMapping
     public Group createGroup(@RequestBody Group group) {
-        return groupService.createGroup(group);
+        return groupService.createGroup(group).getOrThrow();
     }
 
     @GetMapping("{id}")
     public Group getGroup(@PathVariable String id) {
-        return groupService.findGroupById(id).orElseThrow(NotFoundException::new);
+        return groupService.findGroupById(id).getOrThrow();
     }
 
     @DeleteMapping("{id}")
@@ -40,6 +38,6 @@ public class GroupController {
 
     @PutMapping("{id}")
     public Group updateGroup(@PathVariable String id, @RequestBody Group group) {
-        return groupService.updateGroup(id, group).orElseThrow(NotFoundException::new);
+        return groupService.updateGroup(id, group).getOrThrow();
     }
 }

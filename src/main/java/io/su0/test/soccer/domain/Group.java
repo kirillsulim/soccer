@@ -2,6 +2,7 @@ package io.su0.test.soccer.domain;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Group {
@@ -11,7 +12,7 @@ public class Group {
 
     private String name;
 
-    private List<Team> teams;
+    private List<Team> teams = Collections.emptyList();
 
     public String getId() {
         return id;

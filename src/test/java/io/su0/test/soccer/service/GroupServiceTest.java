@@ -2,6 +2,7 @@ package io.su0.test.soccer.service;
 
 import io.su0.test.soccer.domain.Group;
 import io.su0.test.soccer.persistence.GroupRepository;
+import io.su0.test.soccer.util.functional.Result;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class GroupServiceTest {
 
         Group newData = new Group();
         newData.setName("New name");
-        Optional<Group> result = groupService.updateGroup("test", newData);
+        Result<Group, RuntimeException> result = groupService.updateGroup("test", newData);
 
         Assert.assertEquals("New name", result.get().getName());
         verify(groupRepository, atLeastOnce()).save(newData);
