@@ -5,6 +5,8 @@ import com.mashape.unirest.http.Unirest;
 import io.su0.test.soccer.IntegrationTestBase;
 import io.su0.test.soccer.domain.Group;
 import io.su0.test.soccer.domain.Team;
+import org.apache.http.HttpHeaders;
+import org.apache.http.entity.ContentType;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -18,7 +20,10 @@ public class TeamControllerIT extends IntegrationTestBase {
         Group group = new Group();
         group.setName("A");
 
-        HttpResponse<Group> createGroupResponse = Unirest.post(URL + "groups").body(group).asObject(Group.class);
+        HttpResponse<Group> createGroupResponse = Unirest.post(URL + "groups")
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .body(group)
+                .asObject(Group.class);
         assertThat(createGroupResponse.getStatus(), is(200));
 
         String id = createGroupResponse.getBody().getId();
