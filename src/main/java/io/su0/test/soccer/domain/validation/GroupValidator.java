@@ -8,11 +8,11 @@ public class GroupValidator {
 
     private static final int MAX_TEAM_COUNT = 4;
 
-    public static Result<Group, ValidationException> validate(Group group) {
+    public static Result<Group, RuntimeException> validate(Group group) {
         return validateTeamCount(group);
     }
 
-    private static Result<Group, ValidationException> validateTeamCount(Group group) {
+    private static Result<Group, RuntimeException> validateTeamCount(Group group) {
         int teamCount = group.getTeams().size();
         if (teamCount <= MAX_TEAM_COUNT) {
             return Result.ok(group);

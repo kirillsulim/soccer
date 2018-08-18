@@ -1,6 +1,7 @@
 package io.su0.test.soccer.service;
 
 import io.su0.test.soccer.domain.Group;
+import io.su0.test.soccer.domain.validation.GroupValidator;
 import io.su0.test.soccer.exceptions.NotFoundException;
 import io.su0.test.soccer.persistence.GroupRepository;
 import io.su0.test.soccer.util.functional.Result;
@@ -52,6 +53,9 @@ public class GroupService {
 
     @Transactional
     public Result<Group, RuntimeException> updateGroup(String id, Function<Group, Group> updater) {
-        return findGroupById(id).map(group -> groupRepository.save(updater.apply(group)));
+        return findGroupById(id)
+                .map(updater)
+                .flatMap(GroupValidator::validate)
+                .map(groupRepository::save);
     }
 }

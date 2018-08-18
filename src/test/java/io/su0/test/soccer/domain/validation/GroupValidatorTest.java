@@ -19,7 +19,7 @@ public class GroupValidatorTest {
     public void shouldValidateGroupWith4Teams() {
         Group group = getGroupForTeams("Argentina", "Brazil", "Chech", "Dominicana");
 
-        Result<Group, ValidationException> validate = GroupValidator.validate(group);
+        Result<Group, RuntimeException> validate = GroupValidator.validate(group);
         assertThat(validate.isOk(), is(true));
     }
 
@@ -27,7 +27,7 @@ public class GroupValidatorTest {
     public void shouldNotValidateGroupWith5Teams() {
         Group group = getGroupForTeams("Argentina", "Brazil", "Chech", "Dominicana", "England");
 
-        Result<Group, ValidationException> validate = GroupValidator.validate(group);
+        Result<Group, RuntimeException> validate = GroupValidator.validate(group);
         assertThat(validate.isOk(), is(false));
         assertThat(validate.getError().getMessage(), is("Illegal team count 5"));
     }
