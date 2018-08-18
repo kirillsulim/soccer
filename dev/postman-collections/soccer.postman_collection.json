@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "33e5a320-acff-4f21-a63e-8849ced7388b",
+		"name": "soccer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "groups",
+			"item": [
+				{
+					"name": "POST localhost:8080/groups/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"some name 2\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/groups/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET localhost:8080/groups/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE localhost:8080/groups/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b746c0061faac340e138311",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b746c0061faac340e138311"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET localhost:8080/groups/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b746bba61faac337b4ab193",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b746bba61faac337b4ab193"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT localhost:8080/groups/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"some name updated\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/groups/5b746bba61faac337b4ab193",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b746bba61faac337b4ab193"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "teams",
+			"item": [
+				{
+					"name": "localhost:8080/groups/{id}/teams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b7694f4dd0edb2c23785df7/teams",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b7694f4dd0edb2c23785df7",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{groupId}/teams",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"awsome team\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/groups/5b7720bfcd096f43a9c0ee83/teams",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b7720bfcd096f43a9c0ee83",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{groupId}/teams/{teamName}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b7720bfcd096f43a9c0ee83/teams/awsome team",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b7720bfcd096f43a9c0ee83",
+								"teams",
+								"awsome team"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{groupId}/teams/{teamName}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b7720bfcd096f43a9c0ee83/teams/awsome team",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b7720bfcd096f43a9c0ee83",
+								"teams",
+								"awsome team"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{groupId}/teams/{gameName}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"awsome team up s\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/groups/5b7720bfcd096f43a9c0ee83/teams/awsome team up",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b7720bfcd096f43a9c0ee83",
+								"teams",
+								"awsome team up"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "games",
+			"item": [
+				{
+					"name": "localhost:8080/groups/{id}/games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b77c6c6a13c131f820f7124/games",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b77c6c6a13c131f820f7124",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{id}/games",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"team1\": \"blabla\",\n\t\"team2\": \"zlazla\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/groups/5b77c6c6a13c131f820f7124/games",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b77c6c6a13c131f820f7124",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{id}/games/{idx}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b77c6c6a13c131f820f7124/games/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b77c6c6a13c131f820f7124",
+								"games",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{id}/games/{idx}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/groups/5b77c6c6a13c131f820f7124/games/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b77c6c6a13c131f820f7124",
+								"games",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/groups/{id}/games/{idx}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"team1\": \"blabla\",\n    \"team2\": \"zlazla\",\n    \"team1Scores\": 1,\n    \"team2Scores\": 2\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/groups/5b77c6c6a13c131f820f7124/games/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"groups",
+								"5b77c6c6a13c131f820f7124",
+								"games",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
