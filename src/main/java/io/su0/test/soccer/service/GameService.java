@@ -2,15 +2,11 @@ package io.su0.test.soccer.service;
 
 import io.su0.test.soccer.domain.Game;
 import io.su0.test.soccer.domain.Group;
-import io.su0.test.soccer.domain.Team;
 import io.su0.test.soccer.exceptions.NotFoundException;
-import io.su0.test.soccer.persistence.GroupRepository;
 import io.su0.test.soccer.util.functional.Result;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;

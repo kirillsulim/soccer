@@ -3,7 +3,6 @@ package io.su0.test.soccer.domain.validation;
 import io.su0.test.soccer.domain.Game;
 import io.su0.test.soccer.domain.Group;
 import io.su0.test.soccer.domain.Team;
-import io.su0.test.soccer.exceptions.ValidationException;
 import io.su0.test.soccer.util.functional.Result;
 import org.junit.Test;
 

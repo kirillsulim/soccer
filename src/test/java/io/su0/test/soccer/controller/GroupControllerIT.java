@@ -2,10 +2,8 @@ package io.su0.test.soccer.controller;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
-import io.su0.test.soccer.domain.Group;
 import io.su0.test.soccer.IntegrationTestBase;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import io.su0.test.soccer.domain.Group;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -14,12 +12,6 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-
-/**
- * GroupControllerIT
- *
- * @author Kirill Sulim
- */
 public class GroupControllerIT extends IntegrationTestBase {
 
     @Test
