@@ -33,7 +33,7 @@ public class GroupController {
 
     @DeleteMapping("{id}")
     public void deleteGroup(@PathVariable String id) {
-        groupService.deleteById(id);
+        groupService.deleteById(id).getOrThrow();
     }
 
     @PutMapping("{id}")

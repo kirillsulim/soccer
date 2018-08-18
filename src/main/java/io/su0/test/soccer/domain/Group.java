@@ -2,8 +2,7 @@ package io.su0.test.soccer.domain;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 
 public class Group {
 
@@ -12,7 +11,9 @@ public class Group {
 
     private String name;
 
-    private Map<String, Team> teams = Collections.emptyMap();
+    private Map<String, Team> teams = new HashMap<>();
+
+    private List<Game> games = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -36,5 +37,13 @@ public class Group {
 
     public void setTeams(Map<String, Team> teams) {
         this.teams = teams;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
     }
 }
