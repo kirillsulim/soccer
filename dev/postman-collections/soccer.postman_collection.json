@@ -136,14 +136,14 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:8080/groups/5b7694f4dd0edb2c23785df7/teams",
+							"raw": "localhost:8080/groups/5b77f7b07418876aaa9a8e0d/teams",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"groups",
-								"5b7694f4dd0edb2c23785df7",
+								"5b77f7b07418876aaa9a8e0d",
 								"teams"
 							]
 						}
@@ -383,6 +383,27 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "localhost:8080/groups/{id}/table",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/groups/5b77c6c6a13c131f820f7124/table",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"groups",
+						"5b77c6c6a13c131f820f7124",
+						"table"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
